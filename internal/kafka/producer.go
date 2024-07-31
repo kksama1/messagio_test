@@ -47,7 +47,7 @@ func SendMsg(id int64, msgContent string) error {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		err = w.WriteMessages(ctx, kafka.Message{Key: []byte("toConsumer"), Value: byteMsg})
+		err = w.WriteMessages(ctx, kafka.Message{Value: byteMsg})
 		if errors.Is(err, kafka.LeaderNotAvailable) || errors.Is(err, context.DeadlineExceeded) {
 			time.Sleep(time.Millisecond * 250)
 			continue

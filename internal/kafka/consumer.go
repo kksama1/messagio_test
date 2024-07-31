@@ -6,7 +6,6 @@ import (
 	"log"
 	"messaggio/internal/db/postgre"
 	"sync"
-	"time"
 )
 
 type Consumer interface {
@@ -44,12 +43,7 @@ func ReadMsg(ctx context.Context, wg *sync.WaitGroup, ch chan<- []byte) {
 				log.Println("failed to read message", err)
 				break
 			}
-
-			if string(m.Key) == "toConsumer" {
-				ch <- m.Value
-			} else {
-				time.Sleep(100 * time.Millisecond)
-			}
+			ch <- m.Value
 		}
 	}
 }
