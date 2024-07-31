@@ -22,7 +22,7 @@ func ReadMsg(ctx context.Context, wg *sync.WaitGroup, ch chan<- []byte) {
 	defer wg.Done()
 
 	r := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:   []string{"kafka:9092"},
+		Brokers:   []string{"0.0.0.0:9092"},
 		Topic:     "my-topic",
 		Partition: 0,
 		MaxBytes:  10e6,
