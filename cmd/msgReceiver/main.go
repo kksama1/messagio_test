@@ -26,7 +26,6 @@ func main() {
 	}()
 
 	service := handlers.NewService(pool)
-	service.DB.DropTable()
 	err = service.DB.InitDB()
 	if err != nil {
 		log.Fatal(err)

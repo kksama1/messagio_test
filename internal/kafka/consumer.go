@@ -45,6 +45,7 @@ func ReadMsg(ctx context.Context, wg *sync.WaitGroup, ch chan<- []byte) {
 				break
 			}
 			ch <- m.Value
+			m.Value = []byte{}
 		}
 	}
 }

@@ -15,7 +15,7 @@ import (
 type DatabaseDriver interface {
 	InitDB() error
 	AddMessage(message string) (int64, error)
-	DropTable()
+	//DropTable()
 	GetOverallRows() (int, error)
 	GetProcessedRows() (int, error)
 	//SetMsgAsProcessed(id int64) error
@@ -95,12 +95,12 @@ func (d *PostgresDriver) InitDB() error {
 	return nil
 }
 
-func (d *PostgresDriver) DropTable() {
-	query := `
-	DROP TABLE IF EXISTS messages;
-	`
-	d.Pool.Exec(query)
-}
+//func (d *PostgresDriver) DropTable() {
+//	query := `
+//	DROP TABLE IF EXISTS messages;
+//	`
+//	d.Pool.Exec(query)
+//}
 
 // AddMessage metod creates new row into messages table.
 func (d *PostgresDriver) AddMessage(message string) (int64, error) {
