@@ -67,6 +67,9 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_HEAP_OPTS: "-Xmx512m -Xms512m"
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    volumes:
+      - /var/lib/kafka/data
     networks:
       - mynetwork
     depends_on:
