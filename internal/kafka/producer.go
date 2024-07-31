@@ -34,7 +34,7 @@ func SendMsg(id int64, msgContent string) error {
 	}
 
 	w := kafka.Writer{
-		Addr:                   kafka.TCP("0.0.0.0:9092"),
+		Addr:                   kafka.TCP("0.0.0.0:9093"),
 		Topic:                  "my-topic",
 		Balancer:               &kafka.LeastBytes{},
 		AllowAutoTopicCreation: true,
