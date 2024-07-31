@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS messages (
+    ID SERIAL PRIMARY KEY,
+    Content TEXT,
+    Processed BOOL DEFAULT FALSE
+);
