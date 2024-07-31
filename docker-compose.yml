@@ -51,6 +51,10 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    deploy:
+      resources:
+        limits:
+          memory: 2G  # или больше, если это необходимо
     restart: always
     ports:
       - "9092:9092"
