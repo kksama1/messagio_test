@@ -7,6 +7,7 @@ import (
 	"messaggio/internal/kafka"
 	"messaggio/internal/model"
 	"net/http"
+	"time"
 )
 
 type ServiceHandler interface {
@@ -31,7 +32,7 @@ func NewService(pool *sql.DB) *Service {
 func (s *Service) SendMsgToKafka() {
 	var helpSlice []model.Message
 	for {
-		for len(s.Messages) != 0 {
+		if len(s.Messages) > 0 {
 			err := kafka.SendMsg(s.Messages[0].ID, s.Messages[0].Content)
 			if err != nil {
 				log.Printf("error during sendimg msg via kafka : %v\n", err)
@@ -42,5 +43,6 @@ func (s *Service) SendMsgToKafka() {
 		}
 
 		s.Messages = append(s.Messages, helpSlice...)
+		time.Sleep(500 * time.Millisecond)
 	}
 }
