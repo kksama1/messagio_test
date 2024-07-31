@@ -31,7 +31,6 @@ func NewService(pool *sql.DB) *Service {
 func (s *Service) SendMsgToKafka() {
 	var helpSlice []model.Message
 	for {
-		log.Println("SendMsgToKafka: len(s.Messages) = ", len(s.Messages))
 		for len(s.Messages) != 0 {
 			err := kafka.SendMsg(s.Messages[0].ID, s.Messages[0].Content)
 			if err != nil {
