@@ -26,17 +26,17 @@ services:
       depends_on:
         - postgres
 
-  consumer:
-    build:
-      context: .
-      dockerfile: ./cmd/consumer/Dockerfile
-    restart: always
-    ports:
-      - "8081:8081"
-    networks:
-      - mynetwork
-#    depends_on:
-#      - msgreciever
+#  consumer:
+#    build:
+#      context: .
+#      dockerfile: ./cmd/consumer/Dockerfile
+#    restart: always
+#    ports:
+#      - "8081:8081"
+#    networks:
+#      - mynetwork
+##    depends_on:
+##      - msgreciever
 
 
   zookeeper:
