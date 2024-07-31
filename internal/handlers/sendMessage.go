@@ -27,7 +27,7 @@ func (s *Service) SendMessage(w http.ResponseWriter, r *http.Request) {
 
 	s.Messages = append(s.Messages, message)
 
-	log.Println("Msg send to kafka topic")
+	//log.Println("Msg send to kafka topic")
 
 	log.Println("Message added to db")
 	fmt.Fprintf(w, "You message added to database with id:%d\n", message.ID)

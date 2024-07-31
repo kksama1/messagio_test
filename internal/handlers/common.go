@@ -36,6 +36,7 @@ func (s *Service) SendMsgToKafka() {
 			log.Printf("error during sendimg msg via kafka : %v\n", err)
 			helpSlice = append(helpSlice, s.Messages[0])
 		}
+
 		s.Messages = s.Messages[1:]
 	}
 
