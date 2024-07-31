@@ -38,8 +38,8 @@ func SendMsg(id int64, msgContent string) error {
 		Topic:                  "my-topic",
 		Balancer:               &kafka.LeastBytes{},
 		AllowAutoTopicCreation: true,
-		//Logger:                 kafka.LoggerFunc(logf),
-		//ErrorLogger:            kafka.LoggerFunc(logf),
+		Logger:                 kafka.LoggerFunc(logf),
+		ErrorLogger:            kafka.LoggerFunc(logf),
 	}
 
 	const retries = 3

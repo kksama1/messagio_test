@@ -39,6 +39,7 @@ func ReadMsg(ctx context.Context, wg *sync.WaitGroup, ch chan<- []byte) {
 
 		default:
 			m, err := r.ReadMessage(ctx)
+			log.Println(m)
 			if err != nil {
 				log.Println("failed to read message", err)
 				break
